@@ -109,7 +109,8 @@ function InfoBox(opt_opts) {
   }
   this.isHidden_ = !opt_opts.visible;
 
-  this.alignBottom_ = opt_opts.alignBottom || false;
+  //this.alignBottom_ = opt_opts.alignBottom || false;
+  this.alignBottom_ = false;
   this.pane_ = opt_opts.pane || "floatPane";
   this.enableEventPropagation_ = opt_opts.enableEventPropagation || false;
 
@@ -202,7 +203,7 @@ InfoBox.prototype.createInfoBoxDiv_ = function () {
       }
     }
 
-    this.panBox_(this.disableAutoPan_);
+    //this.panBox_(this.disableAutoPan_);
 
     if (!this.enableEventPropagation_) {
 
@@ -488,7 +489,10 @@ InfoBox.prototype.draw = function () {
   if (this.alignBottom_) {
     this.div_.style.bottom = -(pixPosition.y + this.pixelOffset_.height) + "px";
   } else {
-    this.div_.style.top = (pixPosition.y + this.pixelOffset_.height) + "px";
+   // offset by half the height of the infobox to center it vertically
+   var midOffsetHeight = this.div_.offsetHeight/2;
+  
+   this.div_.style.top = (pixPosition.y + this.pixelOffset_.height - midOffsetHeight) + "px";
   }
 
   if (this.isHidden_) {
@@ -537,7 +541,8 @@ InfoBox.prototype.setOptions = function (opt_opts) {
   }
   if (typeof opt_opts.alignBottom !== "undefined") {
 
-    this.alignBottom_ = opt_opts.alignBottom;
+    //this.alignBottom_ = opt_opts.alignBottom;
+	this.alignBottom_ = false;
   }
   if (typeof opt_opts.position !== "undefined") {
 
@@ -773,10 +778,10 @@ InfoBox.prototype.open = function (map, anchor) {
 
   this.setMap(map);
 
-  if (this.div_) {
+  //if (this.div_) {
 
-    this.panBox_();
-  }
+ //   this.panBox_();
+ // }
 };
 
 /**
