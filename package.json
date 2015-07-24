@@ -1,0 +1,22 @@
+{
+  "name": "infobox",
+  "version": "1.1.13",
+  "keywords": [
+    "infobox",
+    "google",
+    "maps"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:davidwong/infobox.git"
+  },
+  "main": "src/infobox.js",
+  "scripts": {
+	"build": "uglifyjs src/infobox.js --compress --output src/infobox_packed.js"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "uglify-js": "^2.4.23"
+  }
+}
